@@ -18,3 +18,4 @@ buildNumber.properties
 
 .idea/*
 .mvn/*
+src/test/resources/*
