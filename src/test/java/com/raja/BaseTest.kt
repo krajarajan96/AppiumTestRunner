@@ -1,0 +1,40 @@
+package com.raja
+
+import io.appium.java_client.android.AndroidDriver
+import io.appium.java_client.android.options.UiAutomator2Options
+import io.appium.java_client.service.local.AppiumDriverLocalService
+import io.appium.java_client.service.local.AppiumServiceBuilder
+import org.testng.annotations.AfterClass
+import org.testng.annotations.BeforeClass
+import java.io.File
+import java.net.URI
+
+open class BaseTest
+{
+    lateinit var service: AppiumDriverLocalService
+    lateinit var driver: AndroidDriver
+
+    @BeforeClass
+    fun configure() {
+        // Programmatically start Appium server
+        service = AppiumServiceBuilder()
+            .withAppiumJS(File("/usr/local/lib/node_modules/appium/build/lib/main.js"))
+            .withIPAddress("127.0.0.1")
+            .usingPort(4723)
+            .build()
+        service.start()
+
+        val options = UiAutomator2Options()
+        options.setDeviceName("Medium Phone API 36 (2)")
+        options.setApp("/Users/rajark/LeisureWork/MyAppium/src/test/resources/ApiDemos-debug.apk")
+
+        val url = URI("http://127.0.0.1:4723").toURL()
+        driver = AndroidDriver(url, options)
+    }
+
+    @AfterClass
+    fun tearDown() {
+        driver.quit()
+        service.stop()
+    }
+}
