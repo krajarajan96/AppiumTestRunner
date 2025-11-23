@@ -8,6 +8,7 @@ import org.testng.annotations.AfterClass
 import org.testng.annotations.BeforeClass
 import java.io.File
 import java.net.URI
+import java.time.Duration
 
 open class BaseTest
 {
@@ -30,6 +31,7 @@ open class BaseTest
 
         val url = URI("http://127.0.0.1:4723").toURL()
         driver = AndroidDriver(url, options)
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10))
     }
 
     @AfterClass
