@@ -41,13 +41,30 @@ class AppiumTests : BaseTest() {
         driver.findElement(AppiumBy.accessibilityId("1. Custom Adapter")).click()
 
         val peopleNamesElement = driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text='People Names']"))
-        (driver as JavascriptExecutor).executeScript(
-            "mobile: longClickGesture",
-            ImmutableMap.of(
-                "elementId", (peopleNamesElement as RemoteWebElement).id,
-                "duration", 2000
-            )
+        longPressGesture(peopleNamesElement)
+
+        val txt = driver.findElement(AppiumBy.id("android:id/title")).text
+        Assert.assertEquals(txt, "Sample menu")
+        Assert.assertTrue(
+            driver.findElement(AppiumBy.id("android:id/title")).isDisplayed
         )
-        Thread.sleep(2000)
+    }
+
+    @Test
+    fun scrollGestureTest() {
+        driver.findElement(AppiumBy.accessibilityId("Views")).click()
+        scrollToEnd()
+    }
+
+    @Test
+    fun swipeGestureTest() {
+        driver.findElement(AppiumBy.accessibilityId("Views")).click()
+        driver.findElement(AppiumBy.accessibilityId("Gallery")).click()
+        driver.findElement(AppiumBy.accessibilityId("1. Photos")).click()
+
+        val imageElement = driver.findElement(By.xpath("(//android.widget.ImageView)[1]"))
+        Assert.assertEquals(imageElement.getAttribute("focusable"), "true")
+        swipeLeft(imageElement)
+        Assert.assertEquals(imageElement.getAttribute("focusable"), "false")
     }
 }
