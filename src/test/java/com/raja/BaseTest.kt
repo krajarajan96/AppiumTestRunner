@@ -31,7 +31,7 @@ open class BaseTest
         service.start()
 
         val options = UiAutomator2Options()
-        options.setDeviceName("Medium Phone API 36 (2)")
+        options.setDeviceName("Pixel 6 Pro")
         options.setApp("/Users/rajark/LeisureWork/MyAppium/src/test/resources/ApiDemos-debug.apk")
 
         val url = URI("http://127.0.0.1:4723").toURL()
@@ -109,6 +109,25 @@ open class BaseTest
                 "elementId", (element as RemoteWebElement).id,
                 "direction", "right",
                 "percent", percent
+            )
+        )
+    }
+
+    fun drag(source: WebElement, endX: Double, endY: Double) {
+        (driver as JavascriptExecutor).executeScript(
+            "mobile: dragGesture", ImmutableMap.of(
+                "elementId", (source as RemoteWebElement).getId(),
+                "endX", endX,
+                "endY", endY
+            )
+        )
+    }
+
+    fun startActivity(activity: String) {
+        (driver as JavascriptExecutor).executeScript(
+            "mobile: startActivity",
+            ImmutableMap.of(
+                "intent", activity,
             )
         )
     }
