@@ -32,7 +32,7 @@ open class BaseTest
 
         val options = UiAutomator2Options()
         options.setDeviceName("Pixel 6 Pro")
-        options.setApp("/Users/rajark/LeisureWork/MyAppium/src/test/resources/ApiDemos-debug.apk")
+        options.setApp("/Users/rajark/LeisureWork/MyAppium/src/test/resources/General-Store.apk")
 
         val url = URI("http://127.0.0.1:4723").toURL()
         driver = AndroidDriver(url, options)
