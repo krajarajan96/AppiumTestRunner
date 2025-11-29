@@ -33,6 +33,8 @@ open class BaseTest
         val options = UiAutomator2Options()
         options.setDeviceName("Pixel 6 Pro")
         options.setApp("/Users/rajark/LeisureWork/MyAppium/src/test/resources/General-Store.apk")
+        // For automating webviews inside android app
+        // options.setChromedriverExecutableDir("")
 
         val url = URI("http://127.0.0.1:4723").toURL()
         driver = AndroidDriver(url, options)
@@ -130,6 +132,10 @@ open class BaseTest
                 "intent", activity,
             )
         )
+    }
+
+    fun getFormattedAmount(price: String): Double {
+        return price.substring(1).toDouble()
     }
 
     @AfterClass
