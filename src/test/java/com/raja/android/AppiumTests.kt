@@ -1,14 +1,10 @@
-package com.raja
+package com.raja.android
 
-import com.google.common.collect.ImmutableMap
 import io.appium.java_client.AppiumBy
-import io.appium.java_client.android.Activity
 import io.appium.java_client.android.nativekey.AndroidKey
 import io.appium.java_client.android.nativekey.KeyEvent
 import org.openqa.selenium.By
 import org.openqa.selenium.DeviceRotation
-import org.openqa.selenium.JavascriptExecutor
-import org.openqa.selenium.remote.RemoteWebElement
 import org.testng.Assert
 import org.testng.annotations.Test
 import java.net.MalformedURLException

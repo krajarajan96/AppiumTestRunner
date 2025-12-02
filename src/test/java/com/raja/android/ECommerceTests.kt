@@ -1,4 +1,4 @@
-package com.raja
+package com.raja.android
 
 import io.appium.java_client.AppiumBy
 import io.appium.java_client.android.nativekey.AndroidKey
@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.testng.Assert
 import org.testng.annotations.Test
-import java.awt.event.KeyEvent
 import java.time.Duration
 
 

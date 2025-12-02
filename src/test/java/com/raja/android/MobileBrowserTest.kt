@@ -1,4 +1,4 @@
-package com.raja
+package com.raja.android
 
 import org.testng.annotations.Test
 
