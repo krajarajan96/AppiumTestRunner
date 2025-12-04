@@ -33,8 +33,9 @@ open class BaseTest
         service.start()
 
         val options = XCUITestOptions()
-        options.setDeviceName("iPhone 17")
-        options.setApp("/Users/rajark/LeisureWork/AppiumTestRunner/src/test/resources/UIKitCatalog.app")
+        options.setDeviceName("iPhone 13")
+//        options.setApp("/Users/rajark/LeisureWork/AppiumTestRunner/src/test/resources/UIKitCatalog.app")
+        options.setApp("/Users/rajark/LeisureWork/AppiumTestRunner/src/test/resources/TestApp 3.app")
         options.setPlatformVersion("26.1")
         // Appium -> Install webdriver agent -> Interacts with iOS Apps
         options.setWdaLaunchTimeout(Duration.ofSeconds(30))
@@ -50,6 +51,31 @@ open class BaseTest
         // iosClassChain, iosPredicateString are faster
         // XPath -> XML -> App source: For ios, this conversion happens, so kinda slower
 
+    }
+
+    fun longPress(element: WebElement, duration: Int = 5) {
+        val params = HashMap<String, Any>()
+        params["element"] = (element as RemoteWebElement).id
+        params["duration"] = duration
+        driver
+            .executeScript("mobile:touchAndHold", params)
+    }
+
+    fun scrollTopTo(element: WebElement) {
+        val params = HashMap<String, Any>()
+        params["element"] = (element as RemoteWebElement).id
+        params["direction"] = "up"
+        driver
+            .executeScript("mobile:scroll", params)
+    }
+
+    fun scrollBottomTo(element: WebElement) {
+        val params = HashMap<String, Any>()
+//        params["element"] = (element as RemoteWebElement).id
+        params["direction"] = "down"
+//        params["toVisible"] = true
+        driver
+            .executeScript("mobile: scroll", params)
     }
 
     @AfterClass
