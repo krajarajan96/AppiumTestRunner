@@ -88,4 +88,24 @@ class IosBasicsTest: BaseTest()
         // Send keys = 0% to 1%
 
     }
+
+    @Test
+    fun testSwipe() {
+        val params = HashMap<String, Any>()
+        params["bundleId"] = "com.apple.mobileslideshow"
+        driver.executeScript("mobile:launchApp", params)
+
+        val size = driver.findElements(AppiumBy.iOSClassChain("**/XCUIElementTypeImage")).size
+
+        val firstImage = driver.findElement(AppiumBy.xpath("//XCUIElementTypeImage[1]"))
+        firstImage.click()
+
+        (0 until size).forEach { _ ->
+            val swipeParams = HashMap<String, Any>()
+            swipeParams["direction"] = "left"
+            driver.executeScript("mobile:swipe", swipeParams)
+        }
+
+        driver.navigate().back()
+    }
 }

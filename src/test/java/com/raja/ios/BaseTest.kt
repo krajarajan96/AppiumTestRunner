@@ -33,9 +33,9 @@ open class BaseTest
         service.start()
 
         val options = XCUITestOptions()
-        options.setDeviceName("iPhone 13")
+        options.setDeviceName("iPhone 17")
 //        options.setApp("/Users/rajark/LeisureWork/AppiumTestRunner/src/test/resources/UIKitCatalog.app")
-        options.setApp("/Users/rajark/LeisureWork/AppiumTestRunner/src/test/resources/TestApp 3.app")
+//        options.setApp("/Users/rajark/LeisureWork/AppiumTestRunner/src/test/resources/TestApp 3.app")
         options.setPlatformVersion("26.1")
         // Appium -> Install webdriver agent -> Interacts with iOS Apps
         options.setWdaLaunchTimeout(Duration.ofSeconds(30))
