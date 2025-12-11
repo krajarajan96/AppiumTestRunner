@@ -32,6 +32,7 @@ open class BaseTest
 
         val options = UiAutomator2Options()
         options.setDeviceName("Pixel 6 Pro")
+//        options.setDeviceName("Android device") //Real device
         options.setApp("/Users/rajark/LeisureWork/MyAppium/src/test/resources/General-Store.apk")
         // For automating webviews inside android app
         // options.setChromedriverExecutableDir("")
