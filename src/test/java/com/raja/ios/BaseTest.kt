@@ -42,6 +42,12 @@ open class BaseTest
         // For automating webviews inside android app
         // options.setChromedriverExecutableDir("")
 
+        // For real iOS device automation
+        options.setCapability("xcodeOrgId", "") // Team ID found in developer acc: developer.apple.com/account
+        options.setCapability("xcodeSigningId", "iPhone Developer")
+        options.setCapability("udid", "") // Click on Serial number, Get from the iPhone through some steps
+        options.setCapability("updateWDABundleId", "") //
+
         val url = URI("http://127.0.0.1:4723").toURL()
         driver = IOSDriver(url, options)
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10))
